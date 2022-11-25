@@ -1,4 +1,5 @@
 ﻿using System;
+using BookStore.Authors;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Uow;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -49,13 +50,15 @@ public class BookStoreEntityFrameworkCoreModule : AbpModule
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
-        });
+			options.AddRepository<Author, AuthorRepository>();
+		});
 
         context.Services.AddAbpDbContext<BookStoreTenantDbContext>(options =>
         {
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
+			options.AddRepository<Author, AuthorRepository>();
         });
 
         Configure<AbpDbContextOptions>(options =>

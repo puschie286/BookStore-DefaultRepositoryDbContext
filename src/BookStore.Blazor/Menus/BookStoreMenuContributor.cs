@@ -38,6 +38,8 @@ public class BookStoreMenuContributor : IMenuContributor
             )
         );
 
+		context.Menu.AddItem( new ApplicationMenuItem( "Books", "Books", "/books" ) );
+
         //HostDashboard
         context.Menu.AddItem(
             new ApplicationMenuItem(
